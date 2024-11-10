@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BasicState.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BatBat-Game</a> &gt; <a href="index.source.html" class="el_package">al.tonikolaba.gamestate</a> &gt; <span class="el_source">BasicState.java</span></div><h1>BasicState.java</h1><pre class="source lang-java linenums">/** Copyright to N.Kolaba
+All rights reserved ©.
+**/
+package al.tonikolaba.gamestate;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+
+import javax.imageio.ImageIO;
+
+import al.tonikolaba.audio.JukeBox;
+import al.tonikolaba.entity.Player;
+import al.tonikolaba.handlers.Keys;
+import al.tonikolaba.handlers.LoggingHelper;
+import al.tonikolaba.main.GamePanel;
+import al.tonikolaba.tilemap.TileMap;
+
+/**
+ * Created by tonikolaba on 03-Jan-18.
+ */
+
+public abstract class BasicState {
+	private static final String MENU_OPTION = &quot;menuoption&quot;;
+	protected GameStateManager gsm;
+	protected Player player;
+	protected TileMap tileMap;
+<span class="fc" id="L30">	protected boolean blockInput = false;</span>
+	protected BufferedImage bg;
+	protected BufferedImage head;
+<span class="fc" id="L33">	protected int currentChoice = 0;</span>
+	protected String[] options;
+	protected Font font;
+	protected Font font2;
+	protected Font fontMenu;
+
+<span class="fc" id="L39">	public BasicState(GameStateManager gsm) {</span>
+<span class="fc" id="L40">		this.gsm = gsm;</span>
+		try {
+
+<span class="fc" id="L43">			bg = ImageIO.read(getClass().getResourceAsStream(&quot;/Backgrounds/sfondi1.gif&quot;)).getSubimage(0, 0,</span>
+					GamePanel.WIDTH, GamePanel.HEIGHT);
+
+			// load floating head
+<span class="fc" id="L47">			head = ImageIO.read(getClass().getResourceAsStream(&quot;/HUD/Hud.gif&quot;)).getSubimage(0, 12, 12, 11);</span>
+
+			// titles and fonts
+<span class="fc" id="L50">			fontMenu = new Font(&quot;Arial&quot;, Font.BOLD, 18);</span>
+<span class="fc" id="L51">			font = new Font(&quot;Arial&quot;, Font.BOLD, 15);</span>
+<span class="fc" id="L52">			font2 = new Font(&quot;Arial&quot;, Font.PLAIN, 9);</span>
+
+			// load sound sfx
+<span class="fc" id="L55">			JukeBox.load(&quot;/SFX/menuoption.mp3&quot;, MENU_OPTION);</span>
+<span class="fc" id="L56">			JukeBox.load(&quot;/SFX/menuselect.mp3&quot;, &quot;menuselect&quot;);</span>
+
+<span class="nc" id="L58">		} catch (Exception e) {</span>
+<span class="nc" id="L59">			LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
+<span class="fc" id="L60">		}</span>
+<span class="fc" id="L61">	}</span>
+
+	public void update() {
+		// check keys
+<span class="nc" id="L65">		handleInput();</span>
+<span class="nc" id="L66">	}</span>
+
+	public void draw(Graphics2D g) {
+		// draw bg
+<span class="nc" id="L70">		g.drawImage(bg, 0, 0, null);</span>
+		// draw menu options
+<span class="nc" id="L72">		g.setFont(font);</span>
+<span class="nc" id="L73">		g.setColor(Color.YELLOW);</span>
+<span class="nc" id="L74">		g.drawRoundRect(220, 170, 245, 140, 50, 50);</span>
+<span class="nc" id="L75">		g.fillRect(230, 180, 225, 120); // Fills a square</span>
+<span class="nc" id="L76">		g.setColor(Color.WHITE);</span>
+		// draw floating head
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		if (currentChoice == 0)</span>
+<span class="nc" id="L79">			g.drawImage(head, 270, 213, null); // 25</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		else if (currentChoice == 1)</span>
+<span class="nc" id="L81">			g.drawImage(head, 270, 238, null);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		else if (currentChoice == 2)</span>
+<span class="nc" id="L83">			g.drawImage(head, 270, 263, null);</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">		else if (currentChoice == 3)</span>
+<span class="nc" id="L85">			g.drawImage(head, 270, 281, null);</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		else if (currentChoice == 4)</span>
+<span class="nc" id="L87">			g.drawImage(head, 270, 299, null);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">		else if (currentChoice == 5)</span>
+<span class="nc" id="L89">			g.drawImage(head, 270, 317, null);</span>
+		// other
+<span class="nc" id="L91">		g.setFont(font2);</span>
+<span class="nc" id="L92">		g.drawString(&quot;tonikolaba \u00A9 \u00AE&quot;, 20, 468);</span>
+<span class="nc" id="L93">	}</span>
+
+	protected void select() {
+<span class="nc" id="L96">		throw new IllegalStateException(&quot;Needs to be overwritten&quot;);</span>
+	}
+
+	public void handleInput() {
+<span class="nc bnc" id="L100" title="All 2 branches missed.">		if (Keys.isPressed(Keys.ENTER))</span>
+<span class="nc" id="L101">			select();</span>
+<span class="nc bnc" id="L102" title="All 4 branches missed.">		if (Keys.isPressed(Keys.UP) &amp;&amp; currentChoice &gt; 0) {</span>
+<span class="nc" id="L103">			JukeBox.play(MENU_OPTION, 0);</span>
+<span class="nc" id="L104">			currentChoice--;</span>
+		}
+<span class="nc bnc" id="L106" title="All 4 branches missed.">		if (Keys.isPressed(Keys.DOWN) &amp;&amp; currentChoice &lt; options.length - 1) {</span>
+<span class="nc" id="L107">			JukeBox.play(MENU_OPTION, 0);</span>
+<span class="nc" id="L108">			currentChoice++;</span>
+		}
+<span class="nc" id="L110">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

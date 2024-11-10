@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Level1State.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BatBat-Game</a> &gt; <a href="index.source.html" class="el_package">al.tonikolaba.gamestate</a> &gt; <span class="el_source">Level1State.java</span></div><h1>Level1State.java</h1><pre class="source lang-java linenums">package al.tonikolaba.gamestate;
+
+import al.tonikolaba.entity.Enemy.EnemyType;
+import al.tonikolaba.tilemap.Background;
+
+/**
+ * @author ArtOfSoul
+ */
+
+public class Level1State extends GameState {
+
+	public Level1State(GameStateManager gsm) {
+<span class="nc" id="L13">		super(gsm);</span>
+<span class="nc" id="L14">		init(GameStateManager.LEVEL2STATE);</span>
+<span class="nc" id="L15">	}</span>
+
+	@Override
+	public void init(int nextLevel) {
+		// backgrounds
+<span class="nc" id="L20">		super.init(nextLevel); // fillon niveli tj</span>
+
+<span class="nc" id="L22">		generateTileMap(&quot;/Maps/level1.map&quot;, 0, 140, true); // 0, 140</span>
+<span class="nc" id="L23">		setupGameObjects(100, 191, 3700, 131, false); // 1: ku fillon batbat, 2: jetet e personazhit,</span>
+														// 4: lokacionin e transporti per nivelin tj
+
+<span class="nc" id="L26">		setupMusic(&quot;level1&quot;, &quot;/Music/level1.mp3&quot;, true);</span>
+
+<span class="nc" id="L28">		sky = new Background(&quot;/Backgrounds/qielli1.gif&quot;, 0);</span>
+<span class="nc" id="L29">		clouds = new Background(&quot;/Backgrounds/mali1.gif&quot;, 0.1);</span>
+<span class="nc" id="L30">		mountains = new Background(&quot;/Backgrounds/kodra.gif&quot;, 0.2);</span>
+
+<span class="nc" id="L32">		enemyTypesInLevel = new EnemyType[] { EnemyType.XHELBAT, EnemyType.XHELBAT, EnemyType.XHELBAT,</span>
+				EnemyType.XHELBAT, EnemyType.XHELBAT, EnemyType.XHELBAT, EnemyType.XHELBAT, EnemyType.XHELBAT,
+				EnemyType.XHELBAT, EnemyType.XHELBAT, EnemyType.ZOGU, EnemyType.ZOGU };
+
+<span class="nc" id="L36">		coords = new int[][] { new int[] { 1300, 100 }, new int[] { 1320, 100 }, new int[] { 1340, 100 },</span>
+				new int[] { 1660, 100 }, new int[] { 1680, 100 }, new int[] { 1700, 100 }, new int[] { 2180, 100 },
+				new int[] { 2960, 100 }, new int[] { 2980, 100 }, new int[] { 3000, 100 }, new int[] { 2300, 300 },
+				new int[] { 3500, 350 } };
+
+<span class="nc" id="L41">		populateEnemies(enemyTypesInLevel, coords);</span>
+<span class="nc" id="L42">		setupTitle(new int[] { 0, 0, 178, 19 }, new int[] { 0, 33, 93, 13 });</span>
+
+<span class="nc" id="L44">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameStateManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BatBat-Game</a> &gt; <a href="index.source.html" class="el_package">al.tonikolaba.gamestate</a> &gt; <span class="el_source">GameStateManager.java</span></div><h1>GameStateManager.java</h1><pre class="source lang-java linenums">package al.tonikolaba.gamestate;
+
+import al.tonikolaba.audio.JukeBox;
+import al.tonikolaba.main.GamePanel;
+
+/**
+ * @author tonikolaba
+ */
+
+public class GameStateManager {
+
+	public static final int NUMGAMESTATES = 16;
+	public static final int MENUSTATE = 0;
+	public static final int OPTIONSSTATE = 1;
+	public static final int LEVEL1STATE = 2;
+	public static final int LEVEL2STATE = 3;
+	public static final int LEVEL3STATE = 4;
+	public static final int LEVEL4STATE = 5;
+	// public static final int LEVELTEST = 6;
+	public static final int HOWTOPLAY = 7;
+	public static final int ACIDSTATE = 15;
+	public BasicState[] gameStates;
+	private int currentState;
+	private PauseState pauseState;
+	private boolean paused;
+
+<span class="fc" id="L27">	public GameStateManager() {</span>
+
+<span class="fc" id="L29">		JukeBox.init();</span>
+
+<span class="fc" id="L31">		gameStates = new BasicState[NUMGAMESTATES];</span>
+
+<span class="fc" id="L33">		pauseState = new PauseState(this);</span>
+<span class="fc" id="L34">		paused = false;</span>
+
+<span class="fc" id="L36">		currentState = MENUSTATE;</span>
+<span class="fc" id="L37">		loadState(currentState);</span>
+
+<span class="fc" id="L39">	}</span>
+
+	public void loadState(int state) {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">		if (state == MENUSTATE)</span>
+<span class="fc" id="L43">			gameStates[state] = new MenuState(this);</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">		else if (state == OPTIONSSTATE)</span>
+<span class="fc" id="L45">			gameStates[state] = new OptionsState(this);</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">		else if (state == HOWTOPLAY)</span>
+<span class="nc" id="L47">			gameStates[state] = new HowtoPlay(this);</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">		else if (state == LEVEL1STATE)</span>
+<span class="nc" id="L49">			gameStates[state] = new Level1State(this);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		else if (state == LEVEL2STATE)</span>
+<span class="fc" id="L51">			gameStates[state] = new Level2State(this);</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">		else if (state == LEVEL3STATE)</span>
+<span class="fc" id="L53">			gameStates[state] = new Level3State(this);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">		else if (state == LEVEL4STATE)</span>
+<span class="nc" id="L55">			gameStates[state] = new Level4State(this);</span>
+		// else if (state == LEVELTEST)
+		// gameStates[state] = new LevelTest(this);
+<span class="nc bnc" id="L58" title="All 2 branches missed.">		else if (state == ACIDSTATE)</span>
+<span class="nc" id="L59">			gameStates[state] = new AcidState(this);</span>
+<span class="fc" id="L60">	}</span>
+
+	private void unloadState(int state) {
+<span class="nc" id="L63">		gameStates[state] = null;</span>
+<span class="nc" id="L64">	}</span>
+
+	public void setState(int state) {
+<span class="nc" id="L67">		unloadState(currentState);</span>
+<span class="nc" id="L68">		currentState = state;</span>
+<span class="nc" id="L69">		loadState(currentState);</span>
+<span class="nc" id="L70">	}</span>
+
+	public void setPaused(boolean b) {
+<span class="nc" id="L73">		paused = b;</span>
+<span class="nc" id="L74">	}</span>
+
+	public void update() {
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		if (paused) {</span>
+<span class="nc" id="L78">			pauseState.update();</span>
+<span class="nc" id="L79">			return;</span>
+		}
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		if (gameStates[currentState] != null)</span>
+<span class="nc" id="L82">			gameStates[currentState].update();</span>
+<span class="nc" id="L83">	}</span>
+
+	public void draw(java.awt.Graphics2D g) {
+<span class="nc bnc" id="L86" title="All 2 branches missed.">		if (paused) {</span>
+<span class="nc" id="L87">			pauseState.draw(g);</span>
+<span class="nc" id="L88">			return;</span>
+		}
+<span class="nc bnc" id="L90" title="All 2 branches missed.">		if (gameStates[currentState] != null)</span>
+<span class="nc" id="L91">			gameStates[currentState].draw(g);</span>
+		else {
+<span class="nc" id="L93">			g.setColor(java.awt.Color.YELLOW);</span>
+<span class="nc" id="L94">			g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);</span>
+		}
+<span class="nc" id="L96">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
