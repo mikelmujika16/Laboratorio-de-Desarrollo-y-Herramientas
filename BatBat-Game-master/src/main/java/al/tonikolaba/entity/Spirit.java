@@ -2,6 +2,7 @@ package al.tonikolaba.entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -14,7 +15,7 @@ import al.tonikolaba.tilemap.TileMap;
  */
 
 public class Spirit extends Enemy {
-
+	private static final SecureRandom SECURE_RANDOM = new SecureRandom();
 	public BufferedImage[] sprites;
 	private Player player;
 	private ArrayList<Enemy> enemies;
@@ -184,7 +185,7 @@ public class Spirit extends Enemy {
 				RedEnergy de = new RedEnergy(tileMap);
 				de.setType(RedEnergy.GRAVITY);
 				de.setPosition(x, y);
-				int dir = Math.random() < 0.5 ? 1 : -1;
+				int dir = SECURE_RANDOM.nextBoolean() ? 1 : -1;
 				de.setVector(dir, 0);
 				enemies.add(de);
 			}
