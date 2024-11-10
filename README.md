@@ -1,9 +1,6 @@
-# Laboratorio-de-Desarrollo-y-Herramientas
-Este es un repositorio donde se desarrollara una practica de Laboratorio de Desarrollo y Herramientas, consiste en realizar un análisis y mejora de un proyecto, en este caso hemos seleccionado uno basado en el clasico juego de mario bros.
+# Laboratorio de Desarrollo y Herramientas
 
-Alumnos: 
-- [Marcelo Daniel Choque Mamani]([https://enlace-a-su-perfil.com](https://github.com/alu0101074986))
--
--
--
- 
+Este es un repositorio donde se desarrollará una práctica de Laboratorio de Desarrollo y Herramientas. Consiste en realizar un análisis y mejora de un proyecto. En este caso, hemos seleccionado uno basado en el clásico juego de Mario Bros.
+
+## Alumnos
+- Marcelo Daniel Choque Mamani - [1] [GitHub](https://github.com/alu0101074986) - [2] [ULL](https://campusingenieriaytecnologia2425.ull.es/user/profile.p)
