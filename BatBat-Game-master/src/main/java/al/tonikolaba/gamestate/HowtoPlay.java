@@ -39,16 +39,8 @@ public class HowtoPlay extends BasicState {
 
 	@Override
 	protected void select() {
-		switch (currentChoice) {
-		case 0:
-			JukeBox.play("menuselect");
-			gsm.setState(GameStateManager.OPTIONSSTATE);
-			break;
-		default:
-			JukeBox.play("menuselect");
-			gsm.setState(GameStateManager.OPTIONSSTATE);
-			break;
-		}
+		JukeBox.play("menuselect");
+		gsm.setState(GameStateManager.OPTIONSSTATE);
 	}
 
 	@Override

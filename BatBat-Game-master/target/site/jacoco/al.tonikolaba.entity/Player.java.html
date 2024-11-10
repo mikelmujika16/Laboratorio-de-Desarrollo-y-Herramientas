@@ -527,55 +527,69 @@ public class Player extends MapObject {
 		} else {
 <span class="nc bnc" id="L528" title="All 4 branches missed.">			if (animation.getFrame() == 4 &amp;&amp; animation.getCount() == 0) {</span>
 <span class="nc bnc" id="L529" title="All 2 branches missed.">				for (int c = 0; c &lt; 3; c++) {</span>
-<span class="nc bnc" id="L530" title="All 2 branches missed.">					if (facingRight)</span>
-<span class="nc" id="L531">						energyParticles.add(new EnergyParticle(tileMap, ar.x + ar.width - 4, ar.y + ar.height / 2,</span>
-								EnergyParticle.ENERGY_RIGHT));
-					else
-<span class="nc" id="L534">						energyParticles.add(new EnergyParticle(tileMap, ar.x + 4, ar.y + ar.height / 2,</span>
-								EnergyParticle.ENERGY_LEFT));
+<span class="nc bnc" id="L530" title="All 2 branches missed.">					if (facingRight) {</span>
+<span class="nc" id="L531">						energyParticles.add(new EnergyParticle(</span>
+								tileMap,
+								(double) (ar.x + ar.width - 4),
+								(double) (ar.y + (double) ar.height / 2),  // Casting to double for precise division
+								EnergyParticle.ENERGY_RIGHT
+						));
+					} else {
+<span class="nc" id="L538">						energyParticles.add(new EnergyParticle(</span>
+								tileMap,
+								(double) (ar.x + 4),
+								(double) (ar.y + (double) ar.height / 2),  // Casting to double for precise division
+								EnergyParticle.ENERGY_LEFT
+						));
+					}
 				}
 			}
 		}
-<span class="nc" id="L539">	}</span>
+<span class="nc" id="L548">	}</span>
+
 
 	private void checkUpAttackingAnim() {
-<span class="nc bnc" id="L542" title="All 2 branches missed.">		if (currentAction != UPATTACKING_ANIM) {</span>
-<span class="nc" id="L543">			JukeBox.play(PLAYERATTACK_MUSIC_NAME);</span>
-<span class="nc" id="L544">			setAnimation(UPATTACKING_ANIM);</span>
-<span class="nc" id="L545">			aur.x = (int) x - 15;</span>
-<span class="nc" id="L546">			aur.y = (int) y - 50;</span>
+<span class="nc bnc" id="L552" title="All 2 branches missed.">		if (currentAction != UPATTACKING_ANIM) {</span>
+<span class="nc" id="L553">			JukeBox.play(PLAYERATTACK_MUSIC_NAME);</span>
+<span class="nc" id="L554">			setAnimation(UPATTACKING_ANIM);</span>
+<span class="nc" id="L555">			aur.x = (int) x - 15;</span>
+<span class="nc" id="L556">			aur.y = (int) y - 50;</span>
 		} else {
-<span class="nc bnc" id="L548" title="All 4 branches missed.">			if (animation.getFrame() == 4 &amp;&amp; animation.getCount() == 0) {</span>
-<span class="nc bnc" id="L549" title="All 2 branches missed.">				for (int c = 0; c &lt; 3; c++) {</span>
-<span class="nc" id="L550">					energyParticles.add(</span>
-							new EnergyParticle(tileMap, aur.x + aur.width / 2, aur.y + 5, EnergyParticle.ENERGY_UP));
+<span class="nc bnc" id="L558" title="All 4 branches missed.">			if (animation.getFrame() == 4 &amp;&amp; animation.getCount() == 0) {</span>
+<span class="nc bnc" id="L559" title="All 2 branches missed.">				for (int c = 0; c &lt; 3; c++) {</span>
+<span class="nc" id="L560">					energyParticles.add(new EnergyParticle(</span>
+							tileMap,
+							(double) (aur.x + (double) aur.width / 2), // Casting one operand to double for precise division
+							(double) (aur.y + 5),                      // Casting to double for addition
+							EnergyParticle.ENERGY_UP
+					));
 				}
 			}
 		}
-<span class="nc" id="L555">	}</span>
+<span class="nc" id="L569">	}</span>
 
 	@Override
 	public void draw(Graphics2D g) {
 
 		// draw emote
-<span class="nc bnc" id="L561" title="All 2 branches missed.">		if (emote == CONFUSED_EMOTE) {</span>
-<span class="nc" id="L562">			g.drawImage(confused, (int) (x + xmap - cwidth / 2.0), (int) (y + ymap - 40), null);</span>
-<span class="nc bnc" id="L563" title="All 2 branches missed.">		} else if (emote == SURPRISED_EMOTE) {</span>
-<span class="nc" id="L564">			g.drawImage(surprised, (int) (x + xmap - cwidth / 2.0), (int) (y + ymap - 40), null);</span>
+<span class="nc bnc" id="L575" title="All 2 branches missed.">		if (emote == CONFUSED_EMOTE) {</span>
+<span class="nc" id="L576">			g.drawImage(confused, (int) (x + xmap - cwidth / 2.0), (int) (y + ymap - 40), null);</span>
+<span class="nc bnc" id="L577" title="All 2 branches missed.">		} else if (emote == SURPRISED_EMOTE) {</span>
+<span class="nc" id="L578">			g.drawImage(surprised, (int) (x + xmap - cwidth / 2.0), (int) (y + ymap - 40), null);</span>
 		}
 
 		// draw energy particles
-<span class="nc bnc" id="L568" title="All 2 branches missed.">		for (int i = 0; i &lt; energyParticles.size(); i++) {</span>
-<span class="nc" id="L569">			energyParticles.get(i).draw(g);</span>
+<span class="nc bnc" id="L582" title="All 2 branches missed.">		for (int i = 0; i &lt; energyParticles.size(); i++) {</span>
+<span class="nc" id="L583">			energyParticles.get(i).draw(g);</span>
 		}
 
 		// flinch
-<span class="nc bnc" id="L573" title="All 6 branches missed.">		if (flinching &amp;&amp; !knockback &amp;&amp; flinchCount % 10 &lt; 5) {</span>
-<span class="nc" id="L574">			return;</span>
+<span class="nc bnc" id="L587" title="All 6 branches missed.">		if (flinching &amp;&amp; !knockback &amp;&amp; flinchCount % 10 &lt; 5) {</span>
+<span class="nc" id="L588">			return;</span>
 		}
 
-<span class="nc" id="L577">		super.draw(g);</span>
+<span class="nc" id="L591">		super.draw(g);</span>
 
-<span class="nc" id="L579">	}</span>
+<span class="nc" id="L593">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

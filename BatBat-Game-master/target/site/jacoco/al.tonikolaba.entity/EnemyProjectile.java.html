@@ -13,15 +13,15 @@ public abstract class EnemyProjectile extends MapObject {
     protected int damage;
 
     public EnemyProjectile(TileMap tm) {
-<span class="nc" id="L16">        super(tm);</span>
-<span class="nc" id="L17">    }</span>
+<span class="fc" id="L16">        super(tm);</span>
+<span class="fc" id="L17">    }</span>
 
     public int getDamage() {
-<span class="nc" id="L20">        return damage;</span>
+<span class="fc" id="L20">        return damage;</span>
     }
 
     public boolean shouldRemove() {
-<span class="nc" id="L24">        return remove;</span>
+<span class="fc" id="L24">        return remove;</span>
     }
 
     public abstract void setHit();

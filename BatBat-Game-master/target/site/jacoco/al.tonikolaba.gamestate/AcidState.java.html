@@ -50,27 +50,19 @@ public class AcidState extends BasicState {
 
 	@Override
 	protected void select() {
-<span class="nc bnc" id="L53" title="All 2 branches missed.">		switch (currentChoice) {</span>
-		case 0:
-<span class="nc" id="L55">			JukeBox.play(&quot;menuselect&quot;);</span>
-<span class="nc" id="L56">			gsm.setState(GameStateManager.MENUSTATE);</span>
-<span class="nc" id="L57">			break;</span>
-		default:
-<span class="nc" id="L59">			JukeBox.play(&quot;menuselect&quot;);</span>
-<span class="nc" id="L60">			gsm.setState(GameStateManager.MENUSTATE);</span>
-			break;
-		}
-<span class="nc" id="L63">	}</span>
+<span class="nc" id="L53">		JukeBox.play(&quot;menuselect&quot;);</span>
+<span class="nc" id="L54">		gsm.setState(GameStateManager.MENUSTATE);</span>
+<span class="nc" id="L55">	}</span>
 
 	@Override
 	public void handleInput() {
-<span class="nc bnc" id="L67" title="All 2 branches missed.">		if (Keys.isPressed(Keys.ENTER))</span>
-<span class="nc" id="L68">			select();</span>
-<span class="nc bnc" id="L69" title="All 4 branches missed.">		if (Keys.isPressed(Keys.UP) &amp;&amp; currentChoice &gt; 0) {</span>
-<span class="nc" id="L70">			JukeBox.play(&quot;menuoption&quot;, 0);</span>
-<span class="nc" id="L71">			gsm.setState(GameStateManager.MENUSTATE);</span>
-<span class="nc" id="L72">			currentChoice--;</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">		if (Keys.isPressed(Keys.ENTER))</span>
+<span class="nc" id="L60">			select();</span>
+<span class="nc bnc" id="L61" title="All 4 branches missed.">		if (Keys.isPressed(Keys.UP) &amp;&amp; currentChoice &gt; 0) {</span>
+<span class="nc" id="L62">			JukeBox.play(&quot;menuoption&quot;, 0);</span>
+<span class="nc" id="L63">			gsm.setState(GameStateManager.MENUSTATE);</span>
+<span class="nc" id="L64">			currentChoice--;</span>
 		}
-<span class="nc" id="L74">	}</span>
+<span class="nc" id="L66">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

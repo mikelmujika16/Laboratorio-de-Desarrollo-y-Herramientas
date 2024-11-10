@@ -39,28 +39,20 @@ public class HowtoPlay extends BasicState {
 
 	@Override
 	protected void select() {
-<span class="nc bnc" id="L42" title="All 2 branches missed.">		switch (currentChoice) {</span>
-		case 0:
-<span class="nc" id="L44">			JukeBox.play(&quot;menuselect&quot;);</span>
-<span class="nc" id="L45">			gsm.setState(GameStateManager.OPTIONSSTATE);</span>
-<span class="nc" id="L46">			break;</span>
-		default:
-<span class="nc" id="L48">			JukeBox.play(&quot;menuselect&quot;);</span>
-<span class="nc" id="L49">			gsm.setState(GameStateManager.OPTIONSSTATE);</span>
-			break;
-		}
-<span class="nc" id="L52">	}</span>
+<span class="nc" id="L42">		JukeBox.play(&quot;menuselect&quot;);</span>
+<span class="nc" id="L43">		gsm.setState(GameStateManager.OPTIONSSTATE);</span>
+<span class="nc" id="L44">	}</span>
 
 	@Override
 	public void handleInput() {
-<span class="nc bnc" id="L56" title="All 2 branches missed.">		if (Keys.isPressed(Keys.ENTER))</span>
-<span class="nc" id="L57">			select();</span>
-<span class="nc bnc" id="L58" title="All 4 branches missed.">		if (Keys.isPressed(Keys.UP) &amp;&amp; currentChoice &gt; 0) {</span>
-<span class="nc" id="L59">			JukeBox.play(&quot;menuoption&quot;, 0);</span>
-<span class="nc" id="L60">			gsm.setState(GameStateManager.MENUSTATE);</span>
-<span class="nc" id="L61">			currentChoice--;</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		if (Keys.isPressed(Keys.ENTER))</span>
+<span class="nc" id="L49">			select();</span>
+<span class="nc bnc" id="L50" title="All 4 branches missed.">		if (Keys.isPressed(Keys.UP) &amp;&amp; currentChoice &gt; 0) {</span>
+<span class="nc" id="L51">			JukeBox.play(&quot;menuoption&quot;, 0);</span>
+<span class="nc" id="L52">			gsm.setState(GameStateManager.MENUSTATE);</span>
+<span class="nc" id="L53">			currentChoice--;</span>
 		}
 
-<span class="nc" id="L64">	}</span>
+<span class="nc" id="L56">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

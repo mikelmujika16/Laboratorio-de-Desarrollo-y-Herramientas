@@ -151,14 +151,14 @@ public class Spirit extends Enemy {
 				dx = dy = 0;
 			}
 			if (stepCount == 60) {
-				x = tileMap.getWidth() / 2;
-				y = tileMap.getHeight() / 2;
+				x = tileMap.getWidth() / 2.0; // Conversión para obtener un double
+				y = tileMap.getHeight() / 2.0; // Conversión para obtener un double
 				explosions.add(new Explosion(tileMap, (int) x, (int) y));
 			}
 			if (stepCount >= 90 && stepCount % 30 == 0) {
 				RedEnergy de = new RedEnergy(tileMap);
 				de.setPosition(x, y);
-				de.setVector(3 * Math.sin(stepCount / 32), 3 * Math.cos(stepCount / 32));
+				de.setVector(3 * Math.sin(stepCount / 32.0), 3 * Math.cos(stepCount / 32.0));
 				de.setType(RedEnergy.BOUNCE);
 				enemies.add(de);
 			}
@@ -212,13 +212,13 @@ public class Spirit extends Enemy {
 				dx = dy = 0;
 			}
 			if (stepCount == 60) {
-				if (player.getx() > tileMap.getWidth() / 2) {
+				if (player.getx() > tileMap.getWidth() / 2.0) { // Cambio en la división para obtener un double
 					x = 30;
-					y = tileMap.getHeight() - 60;
+					y = tileMap.getHeight() - 60.0; // Cambio en la resta para obtener un double
 					dx = 4;
 				} else {
-					x = tileMap.getWidth() - 30;
-					y = tileMap.getHeight() - 60;
+					x = tileMap.getWidth() - 30.0; // Cambio en la resta para obtener un double
+					y = tileMap.getHeight() - 60.0; // Cambio en la resta para obtener un double
 					dx = -4;
 				}
 				explosions.add(new Explosion(tileMap, (int) x, (int) y));
@@ -234,8 +234,8 @@ public class Spirit extends Enemy {
 		else if (steps[step] == 2) {
 			stepCount++;
 			if (stepCount == 1) {
-				x = tileMap.getWidth() - 50; // zbret poshte dhe gjuan topat ne drejtim horzontal-poshte
-				y = 60; // 40 nise nga pika lart duke zbrit poshte
+				x = tileMap.getWidth() - 50.0; // Convertir 50 a 50.0 para obtener un resultado double
+				y = 60;
 			}
 			if (stepCount == 30) { // 60 // per te shtuar hedhjen a bombave nag e majta ne te djatht
 				dy = 73; // 7 leviz hedhjen e batbat ne drejtim me poshte

@@ -98,72 +98,73 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 			try {
 <span class="nc" id="L100">				Thread.sleep(wait);</span>
-<span class="nc" id="L101">			} catch (Exception e) {</span>
-<span class="nc" id="L102">				LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
-<span class="nc" id="L103">			}</span>
+<span class="nc" id="L101">			} catch (InterruptedException e) { // Cambia Exception a InterruptedException</span>
+<span class="nc" id="L102">				Thread.currentThread().interrupt(); // Reinterrumpe el hilo</span>
+<span class="nc" id="L103">				LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
+<span class="nc" id="L104">			}</span>
 
 		}
 
-<span class="nc" id="L107">	}</span>
+<span class="nc" id="L108">	}</span>
 
 	private void update() {
-<span class="nc" id="L110">		gsm.update();</span>
-<span class="nc" id="L111">		Keys.update();</span>
-<span class="nc" id="L112">	}</span>
+<span class="nc" id="L111">		gsm.update();</span>
+<span class="nc" id="L112">		Keys.update();</span>
+<span class="nc" id="L113">	}</span>
 
 	private void draw() {
-<span class="nc" id="L115">		gsm.draw(g);</span>
-<span class="nc" id="L116">	}</span>
+<span class="nc" id="L116">		gsm.draw(g);</span>
+<span class="nc" id="L117">	}</span>
 
 	private void drawToScreen() {
-<span class="nc" id="L119">		Graphics g2 = getGraphics();</span>
-<span class="nc" id="L120">		g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);</span>
-<span class="nc" id="L121">		g2.dispose();</span>
-<span class="nc bnc" id="L122" title="All 2 branches missed.">		if (screenshot) {</span>
-<span class="nc" id="L123">			screenshot = false;</span>
+<span class="nc" id="L120">		Graphics g2 = getGraphics();</span>
+<span class="nc" id="L121">		g2.drawImage(image, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, null);</span>
+<span class="nc" id="L122">		g2.dispose();</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">		if (screenshot) {</span>
+<span class="nc" id="L124">			screenshot = false;</span>
 			try {
-<span class="nc" id="L125">				java.io.File out = new java.io.File(&quot;screenshot &quot; + System.nanoTime() + &quot;.gif&quot;);</span>
-<span class="nc" id="L126">				javax.imageio.ImageIO.write(image, &quot;gif&quot;, out);</span>
-<span class="nc" id="L127">			} catch (Exception e) {</span>
-<span class="nc" id="L128">				LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
-<span class="nc" id="L129">			}</span>
+<span class="nc" id="L126">				java.io.File out = new java.io.File(&quot;screenshot &quot; + System.nanoTime() + &quot;.gif&quot;);</span>
+<span class="nc" id="L127">				javax.imageio.ImageIO.write(image, &quot;gif&quot;, out);</span>
+<span class="nc" id="L128">			} catch (Exception e) {</span>
+<span class="nc" id="L129">				LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
+<span class="nc" id="L130">			}</span>
 		}
-<span class="nc bnc" id="L131" title="All 2 branches missed.">		if (!recording)</span>
-<span class="nc" id="L132">			return;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">		if (!recording)</span>
+<span class="nc" id="L133">			return;</span>
 		try {
-<span class="nc" id="L134">			java.io.File out = new java.io.File(&quot;C:\\out\\frame&quot; + recordingCount + &quot;.gif&quot;);</span>
-<span class="nc" id="L135">			javax.imageio.ImageIO.write(image, &quot;gif&quot;, out);</span>
-<span class="nc" id="L136">			recordingCount++;</span>
-<span class="nc" id="L137">		} catch (Exception e) {</span>
-<span class="nc" id="L138">			LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
-<span class="nc" id="L139">		}</span>
-<span class="nc" id="L140">	}</span>
+<span class="nc" id="L135">			java.io.File out = new java.io.File(&quot;C:\\out\\frame&quot; + recordingCount + &quot;.gif&quot;);</span>
+<span class="nc" id="L136">			javax.imageio.ImageIO.write(image, &quot;gif&quot;, out);</span>
+<span class="nc" id="L137">			recordingCount++;</span>
+<span class="nc" id="L138">		} catch (Exception e) {</span>
+<span class="nc" id="L139">			LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
+<span class="nc" id="L140">		}</span>
+<span class="nc" id="L141">	}</span>
 
 	@Override
 	public void keyPressed(KeyEvent key) {
-<span class="nc bnc" id="L144" title="All 2 branches missed.">		if (key.isControlDown()) {</span>
-<span class="nc bnc" id="L145" title="All 2 branches missed.">			if (key.getKeyCode() == KeyEvent.VK_R) {</span>
-<span class="nc bnc" id="L146" title="All 2 branches missed.">				recording = !recording;</span>
-<span class="nc" id="L147">				return;</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		if (key.isControlDown()) {</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">			if (key.getKeyCode() == KeyEvent.VK_R) {</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">				recording = !recording;</span>
+<span class="nc" id="L148">				return;</span>
 			}
-<span class="nc bnc" id="L149" title="All 2 branches missed.">			if (key.getKeyCode() == KeyEvent.VK_S) {</span>
-<span class="nc" id="L150">				screenshot = true;</span>
-<span class="nc" id="L151">				return;</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">			if (key.getKeyCode() == KeyEvent.VK_S) {</span>
+<span class="nc" id="L151">				screenshot = true;</span>
+<span class="nc" id="L152">				return;</span>
 			}
 		}
-<span class="nc" id="L154">		Keys.keySet(key.getKeyCode(), true);</span>
-<span class="nc" id="L155">	}</span>
+<span class="nc" id="L155">		Keys.keySet(key.getKeyCode(), true);</span>
+<span class="nc" id="L156">	}</span>
 
 	@Override
 	public void keyReleased(KeyEvent key) {
-<span class="nc" id="L159">		Keys.keySet(key.getKeyCode(), false);</span>
-<span class="nc" id="L160">	}</span>
+<span class="nc" id="L160">		Keys.keySet(key.getKeyCode(), false);</span>
+<span class="nc" id="L161">	}</span>
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// Not necessary
 
-<span class="nc" id="L166">	}</span>
+<span class="nc" id="L167">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

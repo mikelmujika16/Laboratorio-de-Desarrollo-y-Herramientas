@@ -151,14 +151,14 @@ public class Spirit extends Enemy {
 <span class="nc" id="L151">				dx = dy = 0;</span>
 			}
 <span class="nc bnc" id="L153" title="All 2 branches missed.">			if (stepCount == 60) {</span>
-<span class="nc" id="L154">				x = tileMap.getWidth() / 2;</span>
-<span class="nc" id="L155">				y = tileMap.getHeight() / 2;</span>
+<span class="nc" id="L154">				x = tileMap.getWidth() / 2.0; // Conversión para obtener un double</span>
+<span class="nc" id="L155">				y = tileMap.getHeight() / 2.0; // Conversión para obtener un double</span>
 <span class="nc" id="L156">				explosions.add(new Explosion(tileMap, (int) x, (int) y));</span>
 			}
 <span class="nc bnc" id="L158" title="All 4 branches missed.">			if (stepCount &gt;= 90 &amp;&amp; stepCount % 30 == 0) {</span>
 <span class="nc" id="L159">				RedEnergy de = new RedEnergy(tileMap);</span>
 <span class="nc" id="L160">				de.setPosition(x, y);</span>
-<span class="nc" id="L161">				de.setVector(3 * Math.sin(stepCount / 32), 3 * Math.cos(stepCount / 32));</span>
+<span class="nc" id="L161">				de.setVector(3 * Math.sin(stepCount / 32.0), 3 * Math.cos(stepCount / 32.0));</span>
 <span class="nc" id="L162">				de.setType(RedEnergy.BOUNCE);</span>
 <span class="nc" id="L163">				enemies.add(de);</span>
 			}
@@ -212,13 +212,13 @@ public class Spirit extends Enemy {
 <span class="nc" id="L212">				dx = dy = 0;</span>
 			}
 <span class="nc bnc" id="L214" title="All 2 branches missed.">			if (stepCount == 60) {</span>
-<span class="nc bnc" id="L215" title="All 2 branches missed.">				if (player.getx() &gt; tileMap.getWidth() / 2) {</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">				if (player.getx() &gt; tileMap.getWidth() / 2.0) { // Cambio en la división para obtener un double</span>
 <span class="nc" id="L216">					x = 30;</span>
-<span class="nc" id="L217">					y = tileMap.getHeight() - 60;</span>
+<span class="nc" id="L217">					y = tileMap.getHeight() - 60.0; // Cambio en la resta para obtener un double</span>
 <span class="nc" id="L218">					dx = 4;</span>
 				} else {
-<span class="nc" id="L220">					x = tileMap.getWidth() - 30;</span>
-<span class="nc" id="L221">					y = tileMap.getHeight() - 60;</span>
+<span class="nc" id="L220">					x = tileMap.getWidth() - 30.0; // Cambio en la resta para obtener un double</span>
+<span class="nc" id="L221">					y = tileMap.getHeight() - 60.0; // Cambio en la resta para obtener un double</span>
 <span class="nc" id="L222">					dx = -4;</span>
 				}
 <span class="nc" id="L224">				explosions.add(new Explosion(tileMap, (int) x, (int) y));</span>
@@ -234,8 +234,8 @@ public class Spirit extends Enemy {
 <span class="nc bnc" id="L234" title="All 2 branches missed.">		else if (steps[step] == 2) {</span>
 <span class="nc" id="L235">			stepCount++;</span>
 <span class="nc bnc" id="L236" title="All 2 branches missed.">			if (stepCount == 1) {</span>
-<span class="nc" id="L237">				x = tileMap.getWidth() - 50; // zbret poshte dhe gjuan topat ne drejtim horzontal-poshte</span>
-<span class="nc" id="L238">				y = 60; // 40 nise nga pika lart duke zbrit poshte</span>
+<span class="nc" id="L237">				x = tileMap.getWidth() - 50.0; // Convertir 50 a 50.0 para obtener un resultado double</span>
+<span class="nc" id="L238">				y = 60;</span>
 			}
 <span class="nc bnc" id="L240" title="All 2 branches missed.">			if (stepCount == 30) { // 60 // per te shtuar hedhjen a bombave nag e majta ne te djatht</span>
 <span class="nc" id="L241">				dy = 73; // 7 leviz hedhjen e batbat ne drejtim me poshte</span>
