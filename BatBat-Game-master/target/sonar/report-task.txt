@@ -1,0 +1,6 @@
+projectKey=BatBat
+serverUrl=http://localhost:9000
+serverVersion=10.7.0.96327
+dashboardUrl=http://localhost:9000/dashboard?id=BatBat
+ceTaskId=f7add943-af75-49b7-8752-b560a729e6bc
+ceTaskUrl=http://localhost:9000/api/ce/task?id=f7add943-af75-49b7-8752-b560a729e6bc

@@ -527,16 +527,26 @@ public class Player extends MapObject {
 		} else {
 			if (animation.getFrame() == 4 && animation.getCount() == 0) {
 				for (int c = 0; c < 3; c++) {
-					if (facingRight)
-						energyParticles.add(new EnergyParticle(tileMap, ar.x + ar.width - 4, ar.y + ar.height / 2,
-								EnergyParticle.ENERGY_RIGHT));
-					else
-						energyParticles.add(new EnergyParticle(tileMap, ar.x + 4, ar.y + ar.height / 2,
-								EnergyParticle.ENERGY_LEFT));
+					if (facingRight) {
+						energyParticles.add(new EnergyParticle(
+								tileMap,
+								(double) (ar.x + ar.width - 4),
+								(double) (ar.y + (double) ar.height / 2),  // Casting to double for precise division
+								EnergyParticle.ENERGY_RIGHT
+						));
+					} else {
+						energyParticles.add(new EnergyParticle(
+								tileMap,
+								(double) (ar.x + 4),
+								(double) (ar.y + (double) ar.height / 2),  // Casting to double for precise division
+								EnergyParticle.ENERGY_LEFT
+						));
+					}
 				}
 			}
 		}
 	}
+
 
 	private void checkUpAttackingAnim() {
 		if (currentAction != UPATTACKING_ANIM) {
@@ -547,8 +557,12 @@ public class Player extends MapObject {
 		} else {
 			if (animation.getFrame() == 4 && animation.getCount() == 0) {
 				for (int c = 0; c < 3; c++) {
-					energyParticles.add(
-							new EnergyParticle(tileMap, aur.x + aur.width / 2, aur.y + 5, EnergyParticle.ENERGY_UP));
+					energyParticles.add(new EnergyParticle(
+							tileMap,
+							(double) (aur.x + (double) aur.width / 2), // Casting one operand to double for precise division
+							(double) (aur.y + 5),                      // Casting to double for addition
+							EnergyParticle.ENERGY_UP
+					));
 				}
 			}
 		}

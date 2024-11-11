@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OptionsState.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BatBat-Game</a> &gt; <a href="index.source.html" class="el_package">al.tonikolaba.gamestate</a> &gt; <span class="el_source">OptionsState.java</span></div><h1>OptionsState.java</h1><pre class="source lang-java linenums">/** Copyright to N.Kolaba
+All rights reserved ©.
+**/
+
+package al.tonikolaba.gamestate;
+
+import java.awt.Color;
+import java.awt.Graphics2D;
+
+import al.tonikolaba.audio.JukeBox;
+import al.tonikolaba.handlers.Keys;
+
+/**
+ * @author N.Kolaba
+ */
+
+public class OptionsState extends BasicState {
+
+	// Font fontMenu;
+
+	public OptionsState(GameStateManager gsm) {
+<span class="fc" id="L22">		super(gsm);</span>
+<span class="fc" id="L23">		options = new String[] { &quot;HowTo Play&quot;, &quot;Language&quot;, &quot;Back&quot; };</span>
+		// fontMenu = new Font(&quot;Arial&quot;, Font.BOLD, 20);
+<span class="fc" id="L25">	}</span>
+
+	@Override
+	public void update() {
+		// check keys
+<span class="nc" id="L30">		handleInput();</span>
+<span class="nc" id="L31">	}</span>
+
+	@Override
+	public void draw(Graphics2D i) {
+<span class="nc" id="L35">		super.draw(i);</span>
+<span class="nc" id="L36">		i.setFont(fontMenu);</span>
+		// i.drawRoundRect(210, 160, 265, 160, 50, 50);
+		// i.drawRect(220, 170, 245, 140);// Fills a square
+<span class="nc" id="L39">		i.setColor(Color.RED);</span>
+<span class="nc" id="L40">		i.drawString(&quot;HowTo Play&quot;, 300, 223);</span>
+<span class="nc" id="L41">		i.drawString(&quot;Language&quot;, 300, 248);</span>
+<span class="nc" id="L42">		i.drawString(&quot;Back&quot;, 300, 273);</span>
+<span class="nc" id="L43">	}</span>
+
+	@Override
+	protected void select() {
+<span class="nc bnc" id="L47" title="All 4 branches missed.">		switch (currentChoice) {</span>
+		case 0:
+<span class="nc" id="L49">			JukeBox.play(&quot;menuselect&quot;);</span>
+<span class="nc" id="L50">			gsm.setState(GameStateManager.HOWTOPLAY);</span>
+<span class="nc" id="L51">			break;</span>
+		case 1:
+<span class="nc" id="L53">			JukeBox.play(&quot;menuselect&quot;);</span>
+<span class="nc" id="L54">			gsm.setState(GameStateManager.OPTIONSSTATE);</span>
+<span class="nc" id="L55">			break;</span>
+		case 2:
+<span class="nc" id="L57">			JukeBox.play(&quot;menuselect&quot;);</span>
+<span class="nc" id="L58">			gsm.setState(GameStateManager.MENUSTATE);</span>
+<span class="nc" id="L59">			break;</span>
+		default:
+<span class="nc" id="L61">			gsm.setState(GameStateManager.MENUSTATE);</span>
+			break;
+		}
+<span class="nc" id="L64">	}</span>
+
+	@Override
+	public void handleInput() {
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if (Keys.isPressed(Keys.ENTER))</span>
+<span class="nc" id="L69">			select();</span>
+<span class="nc bnc" id="L70" title="All 4 branches missed.">		if (Keys.isPressed(Keys.UP) &amp;&amp; currentChoice &gt; 0) {</span>
+<span class="nc" id="L71">			JukeBox.play(&quot;menuoption&quot;, 0);</span>
+<span class="nc" id="L72">			currentChoice--;</span>
+		}
+<span class="nc bnc" id="L74" title="All 4 branches missed.">		if (Keys.isPressed(Keys.DOWN) &amp;&amp; currentChoice &lt; options.length - 1) {</span>
+<span class="nc" id="L75">			JukeBox.play(&quot;menuoption&quot;, 0);</span>
+<span class="nc" id="L76">			currentChoice++;</span>
+		}
+<span class="nc" id="L78">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
