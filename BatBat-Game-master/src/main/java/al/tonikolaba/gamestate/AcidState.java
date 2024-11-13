@@ -36,7 +36,6 @@ public class AcidState extends BasicState {
 		g.fillOval(185, 165, 250, 250); // draw a cycle OK
 		g.setColor(Color.ORANGE);
 		g.fillOval(180, 160, 260, 260); // draw a cycle
-		// g.setColor(Color.ORANGE);
 		g.drawRect(185, 165, 250, 250); // draw a square Katerori
 		g.setColor(Color.WHITE);
 		g.fillOval(190, 170, 240, 240); // Fills a square

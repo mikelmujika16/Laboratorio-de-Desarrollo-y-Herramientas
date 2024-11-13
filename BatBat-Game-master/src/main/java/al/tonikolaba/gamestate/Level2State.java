@@ -19,8 +19,6 @@ public class Level2State extends GameState {
 
 		super.init(nextLevel);
 		// backgrounds
-		// perendimi = new Background("/Backgrounds/perendimi.gif", 0.5, 0);
-		// mountains = new Background("/Backgrounds/mali2.gif", 0.2);
 		sky = new Background("/Backgrounds/qielli1.gif", 0);
 		clouds = new Background("/Backgrounds/mali1.gif", 0.1);
 		mountains = new Background("/Backgrounds/kodra.gif", 0.2);

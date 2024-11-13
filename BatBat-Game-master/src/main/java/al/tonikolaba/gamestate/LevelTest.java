@@ -18,15 +18,7 @@ import al.tonikolaba.tilemap.Background;
  */
 public class LevelTest extends GameState {
 
-	private static final String LEVEL_BOSS_MUSIC_NAME = "level1boss";
-	private ArrayList<EnergyParticle> energyParticles;
-	private Piece tlp;
-	private Piece trp;
-	private Piece blp;
-	private Piece brp;
-	private Spirit spirit;
-	private boolean flash;
-	private boolean eventBossDead;
+
 	private boolean eventQuake;
 
 	public LevelTest(GameStateManager gsm) {
@@ -59,7 +51,6 @@ public class LevelTest extends GameState {
 	public void update() {
 
 		super.update();
-		// eventStartFunc();
 		// check if quake event should start
 
 		if (player.getx() > 100 && !tileMap.isShaking()) {
