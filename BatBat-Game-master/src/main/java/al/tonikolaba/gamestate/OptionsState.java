@@ -16,12 +16,11 @@ import al.tonikolaba.handlers.Keys;
 
 public class OptionsState extends BasicState {
 
-	// Font fontMenu;
+
 
 	public OptionsState(GameStateManager gsm) {
 		super(gsm);
 		options = new String[] { "HowTo Play", "Language", "Back" };
-		// fontMenu = new Font("Arial", Font.BOLD, 20);
 	}
 
 	@Override
@@ -34,27 +33,26 @@ public class OptionsState extends BasicState {
 	public void draw(Graphics2D i) {
 		super.draw(i);
 		i.setFont(fontMenu);
-		// i.drawRoundRect(210, 160, 265, 160, 50, 50);
-		// i.drawRect(220, 170, 245, 140);// Fills a square
 		i.setColor(Color.RED);
 		i.drawString("HowTo Play", 300, 223);
 		i.drawString("Language", 300, 248);
 		i.drawString("Back", 300, 273);
 	}
 
+	String menuSelect = "menuselect";
 	@Override
 	protected void select() {
 		switch (currentChoice) {
 		case 0:
-			JukeBox.play("menuselect");
+			JukeBox.play(menuSelect);
 			gsm.setState(GameStateManager.HOWTOPLAY);
 			break;
 		case 1:
-			JukeBox.play("menuselect");
+			JukeBox.play(menuSelect);
 			gsm.setState(GameStateManager.OPTIONSSTATE);
 			break;
 		case 2:
-			JukeBox.play("menuselect");
+			JukeBox.play(menuSelect);
 			gsm.setState(GameStateManager.MENUSTATE);
 			break;
 		default:

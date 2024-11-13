@@ -67,7 +67,7 @@ public abstract class GameState extends BasicState {
 	protected int nextLevelState;
 	protected String levelMusicName;
 
-	public GameState(GameStateManager gsm) {
+	protected GameState(GameStateManager gsm) {
 		super(gsm);
 	}
 

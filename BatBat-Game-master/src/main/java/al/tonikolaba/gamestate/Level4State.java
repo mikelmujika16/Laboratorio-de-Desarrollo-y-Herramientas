@@ -102,7 +102,6 @@ public class Level4State extends GameState {
 		portal.setPosition(270, 395);
 		teleport = new Teleport(tileMap);
 		teleport.setPosition(480, 40);
-		// teleport.setPosition(260, 395);
 
 		// vendi ku duhet te dal Spirit
 		tlp = new Piece(tileMap, new int[] { 0, 0, 10, 10 });
@@ -402,7 +401,7 @@ public class Level4State extends GameState {
 		}
 		if (eventCount == 362) {
 			flash = false;
-			JukeBox.loop("level1boss", 0, 60000, JukeBox.getFrames("level1boss") - 4000);
+			JukeBox.loop(LEVEL_BOSS_MUSIC_NAME, 0, 60000, JukeBox.getFrames(LEVEL_BOSS_MUSIC_NAME) - 4000);
 		}
 		if (eventCount == 420) {
 			eventPortal = blockInput = false;
@@ -416,7 +415,7 @@ public class Level4State extends GameState {
 		eventCount++;
 		if (eventCount == 1) {
 			player.stop();
-			JukeBox.stop("level1boss");
+			JukeBox.stop(LEVEL_BOSS_MUSIC_NAME);
 			enemies.clear();
 		}
 		if (eventCount <= 120 && eventCount % 15 == 0) {

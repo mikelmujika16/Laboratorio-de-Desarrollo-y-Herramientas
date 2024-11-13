@@ -36,7 +36,7 @@ public abstract class BasicState {
 	protected Font font2;
 	protected Font fontMenu;
 
-	public BasicState(GameStateManager gsm) {
+	protected BasicState(GameStateManager gsm) {
 		this.gsm = gsm;
 		try {
 
@@ -47,9 +47,10 @@ public abstract class BasicState {
 			head = ImageIO.read(getClass().getResourceAsStream("/HUD/Hud.gif")).getSubimage(0, 12, 12, 11);
 
 			// titles and fonts
-			fontMenu = new Font("Arial", Font.BOLD, 18);
-			font = new Font("Arial", Font.BOLD, 15);
-			font2 = new Font("Arial", Font.PLAIN, 9);
+			String arial = "Arial";
+			fontMenu = new Font(arial, Font.BOLD, 18);
+			font = new Font(arial, Font.BOLD, 15);
+			font2 = new Font(arial, Font.PLAIN, 9);
 
 			// load sound sfx
 			JukeBox.load("/SFX/menuoption.mp3", MENU_OPTION);

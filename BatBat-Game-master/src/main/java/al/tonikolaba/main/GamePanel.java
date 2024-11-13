@@ -11,18 +11,16 @@ import java.util.logging.Level;
 import javax.swing.JPanel;
 
 import al.tonikolaba.gamestate.GameStateManager;
-//import al.tonikolaba.gamestate.GameStateManager;
+import al.tonikolaba.gamestate.GameStateManager;
 import al.tonikolaba.handlers.Keys;
 import al.tonikolaba.handlers.LoggingHelper;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 	// dimensions
-	// Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 480;
 	public static final int SCALE = 1;
-	// public final int SCALE = (int) screenSize.getHeight() / HEIGHT;
 	/**
 	 *
 	 */
