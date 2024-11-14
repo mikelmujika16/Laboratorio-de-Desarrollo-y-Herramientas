@@ -1,6 +1,0 @@
-projectKey=JuegoLab
-serverUrl=http://localhost:9000
-serverVersion=10.7.0.96327
-dashboardUrl=http://localhost:9000/dashboard?id=JuegoLab
-ceTaskId=ab487916-48b4-409e-95de-51ae97a86743
-ceTaskUrl=http://localhost:9000/api/ce/task?id=ab487916-48b4-409e-95de-51ae97a86743
