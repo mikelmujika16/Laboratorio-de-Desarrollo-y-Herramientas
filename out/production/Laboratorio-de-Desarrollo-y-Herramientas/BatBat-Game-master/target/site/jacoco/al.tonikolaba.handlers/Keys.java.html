@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Keys.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BatBat-Game</a> &gt; <a href="index.source.html" class="el_package">al.tonikolaba.handlers</a> &gt; <span class="el_source">Keys.java</span></div><h1>Keys.java</h1><pre class="source lang-java linenums">package al.tonikolaba.handlers;
+
+import java.awt.event.KeyEvent;
+
+// this class contains a boolean array of current and previous key states
+// for the 10 keys that are used for this game.
+// a key k is down when keyState[k] is true.
+
+public class Keys {
+
+	public static final int NUM_KEYS = 16;
+	public static final int UP = 0;
+	public static final int LEFT = 1;
+	public static final int DOWN = 2;
+	public static final int RIGHT = 3;
+	public static final int BUTTON1 = 4;
+	public static final int BUTTON2 = 5;
+	public static final int BUTTON3 = 6;
+	public static final int BUTTON4 = 7;
+	public static final int ENTER = 8;
+	public static final int ESCAPE = 9;
+<span class="fc" id="L22">	private static final boolean[] KEY_STATE = new boolean[NUM_KEYS];</span>
+<span class="fc" id="L23">	public static boolean[] prevKeyState = new boolean[NUM_KEYS];</span>
+
+<span class="fc" id="L25">	public Keys() {</span>
+		// throw new IllegalStateException(&quot;Utility Class&quot;);
+<span class="fc" id="L27">	}</span>
+
+	public static void keySet(int i, boolean b) {
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">		if (i == KeyEvent.VK_UP)</span>
+<span class="nc" id="L31">			getKeyState()[UP] = b;</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_LEFT)</span>
+<span class="nc" id="L33">			getKeyState()[LEFT] = b;</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_DOWN)</span>
+<span class="nc" id="L35">			getKeyState()[DOWN] = b;</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_RIGHT)</span>
+<span class="nc" id="L37">			getKeyState()[RIGHT] = b;</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_W)</span>
+<span class="nc" id="L39">			getKeyState()[BUTTON1] = b;</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_E)</span>
+<span class="nc" id="L41">			getKeyState()[BUTTON2] = b;</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_R)</span>
+<span class="nc" id="L43">			getKeyState()[BUTTON3] = b;</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_F)</span>
+<span class="nc" id="L45">			getKeyState()[BUTTON4] = b;</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_ENTER)</span>
+<span class="nc" id="L47">			getKeyState()[ENTER] = b;</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">		else if (i == KeyEvent.VK_ESCAPE)</span>
+<span class="nc" id="L49">			getKeyState()[ESCAPE] = b;</span>
+<span class="fc" id="L50">	}</span>
+
+	public static void update() {
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		for (int i = 0; i &lt; NUM_KEYS; i++) {</span>
+<span class="fc" id="L54">			prevKeyState[i] = getKeyState()[i];</span>
+		}
+<span class="fc" id="L56">	}</span>
+
+	public static boolean isPressed(int i) {
+<span class="pc bpc" id="L59" title="3 of 4 branches missed.">		return getKeyState()[i] &amp;&amp; !prevKeyState[i];</span>
+	}
+
+	public static boolean anyKeyPress() {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">		for (int i = 0; i &lt; NUM_KEYS; i++) {</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">			if (getKeyState()[i])</span>
+<span class="nc" id="L65">				return true;</span>
+		}
+<span class="nc" id="L67">		return false;</span>
+	}
+
+	public static boolean[] getKeyState() {
+<span class="fc" id="L71">		return KEY_STATE;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

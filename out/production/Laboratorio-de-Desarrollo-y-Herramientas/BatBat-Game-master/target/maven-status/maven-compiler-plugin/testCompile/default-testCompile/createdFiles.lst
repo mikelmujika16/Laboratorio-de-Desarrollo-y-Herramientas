@@ -1,0 +1,9 @@
+al\tonikolaba\entity\EnemyProjectileTest$TestProjectile.class
+al\tonikolaba\main\BatBatSpringTests.class
+al\tonikolaba\entity\MapObjectTest.class
+al\tonikolaba\ProjectSuiteTests.class
+al\tonikolaba\gamestate\GameStateManagerTest.class
+al\tonikolaba\handlers\KeysTest.class
+al\tonikolaba\entity\PlayerSaveTest.class
+al\tonikolaba\entity\PlayerTest.class
+al\tonikolaba\entity\EnemyProjectileTest.class

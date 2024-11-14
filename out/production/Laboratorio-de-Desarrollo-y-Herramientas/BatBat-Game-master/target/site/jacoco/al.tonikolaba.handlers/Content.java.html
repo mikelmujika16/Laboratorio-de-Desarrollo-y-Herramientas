@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Content.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BatBat-Game</a> &gt; <a href="index.source.html" class="el_package">al.tonikolaba.handlers</a> &gt; <span class="el_source">Content.java</span></div><h1>Content.java</h1><pre class="source lang-java linenums">package al.tonikolaba.handlers;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.util.logging.Level;
+
+/**
+ * @author ArtOfSoul
+ */
+
+// this class loads resources on boot.
+// spritesheets are taken from here.
+
+public class Content {
+
+<span class="fc" id="L16">    private static final BufferedImage[][] ENERGY_PARTICLE = load(&quot;/Sprites/Player/EnergyParticle.gif&quot;, 5, 5);</span>
+<span class="fc" id="L17">    private static final BufferedImage[][] EXPLOSIONS = load(&quot;/Sprites/Enemies/ExplosionRed.gif&quot;, 30, 30);</span>
+
+<span class="fc" id="L19">    private static final BufferedImage[][] ZOGU = load(&quot;/Sprites/Enemies/Zogu.gif&quot;, 39, 20);</span>
+<span class="fc" id="L20">    private static final BufferedImage[][] UFO = load(&quot;/Sprites/Enemies/Ufo.gif&quot;, 30, 30);</span>
+<span class="fc" id="L21">    private static final BufferedImage[][] XHELBAT = load(&quot;/Sprites/Enemies/XhelBat.gif&quot;, 25, 25);</span>
+<span class="fc" id="L22">    private static final BufferedImage[][] RED_ENERGY = load(&quot;/Sprites/Enemies/RedEnergy.gif&quot;, 20, 20);</span>
+
+<span class="nc" id="L24">    private Content() {</span>
+<span class="nc" id="L25">        throw new IllegalStateException(&quot;Utility Class&quot;);</span>
+    }
+
+    public static BufferedImage[][] load(String s, int w, int h) {
+        BufferedImage[][] ret;
+        try {
+<span class="fc" id="L31">            BufferedImage spritesheet = ImageIO.read(Content.class.getResourceAsStream(s));</span>
+<span class="fc" id="L32">            int width = spritesheet.getWidth() / w;</span>
+<span class="fc" id="L33">            int height = spritesheet.getHeight() / h;</span>
+<span class="fc" id="L34">            ret = new BufferedImage[height][width];</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            for (int i = 0; i &lt; height; i++) {</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">                for (int j = 0; j &lt; width; j++) {</span>
+<span class="fc" id="L37">                    ret[i][j] = spritesheet.getSubimage(j * w, i * h, w, h);</span>
+                }
+            }
+<span class="fc" id="L40">            return ret;</span>
+<span class="nc" id="L41">        } catch (Exception e) {</span>
+<span class="nc" id="L42">            LoggingHelper.LOGGER.log(Level.SEVERE, e.getMessage());</span>
+<span class="nc" id="L43">            System.exit(0);</span>
+        }
+<span class="nc" id="L45">        return new BufferedImage[0][0];</span>
+    }
+
+    public static BufferedImage[][] getEnergyParticle() {
+<span class="nc" id="L49">        return ENERGY_PARTICLE;</span>
+    }
+
+    public static BufferedImage[][] getExplosions() {
+<span class="nc" id="L53">        return EXPLOSIONS;</span>
+    }
+
+    public static BufferedImage[][] getZogu() {
+<span class="fc" id="L57">        return ZOGU;</span>
+    }
+
+    public static BufferedImage[][] getUfo() {
+<span class="fc" id="L61">        return UFO;</span>
+    }
+
+    public static BufferedImage[][] getXhelbat() {
+<span class="fc" id="L65">        return XHELBAT;</span>
+    }
+
+    public static BufferedImage[][] getRedEnergy() {
+<span class="nc" id="L69">        return RED_ENERGY;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
